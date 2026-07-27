@@ -2,7 +2,13 @@
 
 App desktop em Python + PySide6 pra automatizar umas rotinas chatas de suporte técnico em ambientes de automação comercial (pensando em postos de combustível e redes de varejo, mas dá pra adaptar). A ideia é simples: em vez de ficar copiando e colando dado de chamado e conferindo API na mão, o app faz isso por você em alguns cliques.
 
-> Este é um projeto de portfólio. Nomes de empresas, clientes, parceiros, e-mails, CNPJs e credenciais originais foram substituídos por dados fictícios. Detalhes em [`PORTFOLIO_CHANGES.md`](./PORTFOLIO_CHANGES.md).
+## Prints 
+
+![Tela principal](/docs/tela-principal.png)
+![Tela de validação de componentes](/docs/validar-componentes.png)
+![Tela de gerar email](/docs/gerar-email.png)
+![Resultado da validação de componentes](/docs/resultado-componentes.png)
+![Resultado do email gerado](/docs/resultado-email.png)
 
 ## Funcionalidades
 
