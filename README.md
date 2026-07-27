@@ -2,24 +2,13 @@
 
 App desktop em Python + PySide6 pra automatizar umas rotinas chatas de suporte técnico em ambientes de automação comercial (pensando em postos de combustível e redes de varejo, mas dá pra adaptar). A ideia é simples: em vez de ficar copiando e colando dado de chamado e conferindo API na mão, o app faz isso por você em alguns cliques.
 
-> Projeto de portfólio: nomes de empresa, cliente, parceiro, e-mails, CNPJs e credenciais do projeto original foram trocados por dados fictícios. Quem quiser saber o que foi mudado e por quê, os detalhes estão guardados à parte (não vão neste repositório).
+> Este é um projeto de portfólio. Nomes de empresas, clientes, parceiros, e-mails, CNPJs e credenciais originais foram substituídos por dados fictícios. Detalhes em [`PORTFOLIO_CHANGES.md`](./PORTFOLIO_CHANGES.md).
 
-## Prints
+## Funcionalidades
 
-<!-- Cole os prints do app aqui, tipo: -->
-![Tela principal](./docs/tela-principal.png)
-![Validação de componentes](./docs/validar-componentes.png)
-![Gerador de e-mail](./docs/gerar-mail.png)
-![Resultado validação de componentes](./docs/resultado-componentes.png)
-![Resultado e-mail gerado](./docs/resultado-email.png)
-
-## O que ele faz
-
-**Validação de componentes de automação** — cola o texto de um chamado (ou vários, um atrás do outro) e o app puxa CNPJ, razão social e os componentes pedidos (pista, loja, troca de óleo), bate numa API externa do parceiro e mostra se cada um tá ativo e com os aceites certos. No final já diz se o cliente está apto pra ativação ou não.
-
-**Geração de e-mail de Carga Full** — mesma lógica: cola o texto do chamado, o app separa os campos (ID do sistema, CNPJ, razão social, nome do cliente, telefone, e-mail, data de implantação), confere se falta algo e, se estiver tudo certo, já abre um rascunho pronto no Gmail direto do navegador.
-
-**Interface simples** — uma janelinha com dois botões, sem precisar abrir terminal pra usar no dia a dia.
+- **Validação de componentes de automação**: cola-se o texto de um chamado de suporte (ou vários, um após o outro), a aplicação extrai CNPJ, razão social e os componentes solicitados (pista, loja, serviço de troca de óleo), consulta uma API externa de um parceiro de automação e mostra se cada componente está ativo e com os aceites necessários, indicando se o cliente está apto para a ativação.
+- **Geração de e-mail de Carga Full**: cola-se os dados recebidos de um chamado, a aplicação extrai os campos (ID do sistema, CNPJ, razão social, nome do cliente, telefone, e-mail, data de implantação), valida se todos os campos obrigatórios foram informados e abre um rascunho de e-mail já preenchido (assunto, corpo e destinatários) direto no Gmail via navegador.
+- **Interface gráfica simples**: janela principal com botões de acesso rápido a cada rotina, sem necessidade de uso de terminal no dia a dia.
 
 ## Tecnologias
 
