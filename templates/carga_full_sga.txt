@@ -1,0 +1,15 @@
+Prezados, bom dia!
+
+Nós da TechPosto Sistemas (PostoTech), software house, solicitamos o envio de uma carga full de produtos conforme os dados abaixo:
+
+ID_SISTEMA: {ID_SISTEMA}
+CNPJ: {CNPJ}
+Razão Social: {RAZAO}
+Nome do Cliente: {NOME}
+Telefone: {TELEFONE}
+E-mail: {EMAIL}
+Data da implantação: {DATA}
+
+Obs.:
+1) Preciso do retorno se está ativo ou não este ID_SISTEMA;
+2) Se estiver ativo, será migração de automação, necessitando enviar uma nova carga full.
