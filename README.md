@@ -1,104 +1,98 @@
 # Posto Assistant
 
-Ferramenta desktop desenvolvida em **Python + PySide6** para automatizar rotinas repetitivas de suporte técnico em ambientes de automação comercial (ex.: postos de combustíveis e redes de varejo). O objetivo é reduzir o tempo gasto em tarefas manuais e repetitivas do time de suporte, como conferência de dados de ativação em APIs de parceiros e geração de e-mails padronizados de solicitação de serviço.
+App desktop em Python + PySide6 pra automatizar umas rotinas chatas de suporte técnico em ambientes de automação comercial (pensando em postos de combustível e redes de varejo, mas dá pra adaptar). A ideia é simples: em vez de ficar copiando e colando dado de chamado e conferindo API na mão, o app faz isso por você em alguns cliques.
 
-> Este é um projeto de portfólio. Nomes de empresas, clientes, parceiros, e-mails, CNPJs e credenciais originais foram substituídos por dados fictícios. Detalhes em [`PORTFOLIO_CHANGES.md`](./PORTFOLIO_CHANGES.md).
+> Projeto de portfólio: nomes de empresa, cliente, parceiro, e-mails, CNPJs e credenciais do projeto original foram trocados por dados fictícios. Quem quiser saber o que foi mudado e por quê, os detalhes estão guardados à parte (não vão neste repositório).
 
-## Funcionalidades
+## Prints
 
-- **Validação de componentes de automação**: cola-se o texto de um chamado de suporte (ou vários, um após o outro), a aplicação extrai CNPJ, razão social e os componentes solicitados (pista, loja, serviço de troca de óleo), consulta uma API externa de um parceiro de automação e mostra se cada componente está ativo e com os aceites necessários, indicando se o cliente está apto para a ativação.
-- **Geração de e-mail de Carga Full**: cola-se os dados recebidos de um chamado, a aplicação extrai os campos (ID do sistema, CNPJ, razão social, nome do cliente, telefone, e-mail, data de implantação), valida se todos os campos obrigatórios foram informados e abre um rascunho de e-mail já preenchido (assunto, corpo e destinatários) direto no Gmail via navegador.
-- **Interface gráfica simples**: janela principal com botões de acesso rápido a cada rotina, sem necessidade de uso de terminal no dia a dia.
+<!-- Cole os prints do app aqui, tipo: -->
+![Tela principal](./docs/tela-principal.png)
+![Validação de componentes](./docs/validar-componentes.png)
+![Gerador de e-mail](./docs/gerar-mail.png)
+![Resultado validação de componentes](./docs/resultado-componentes.png)
+![Resultado e-mail gerado](./docs/resultado-email.png)
 
-## Tecnologias utilizadas
+## O que ele faz
 
-- [Python 3](https://www.python.org/)
-- [PySide6](https://doc.qt.io/qtforpython/) — interface gráfica (Qt for Python)
-- [Requests](https://docs.python-requests.org/) — consumo de API REST externa (OAuth2 client credentials)
-- [PyInstaller](https://pyinstaller.org/) — empacotamento em executável Windows (`.spec` incluído)
-- Expressões regulares (`re`) para extração e parsing de texto semiestruturado
+**Validação de componentes de automação** — cola o texto de um chamado (ou vários, um atrás do outro) e o app puxa CNPJ, razão social e os componentes pedidos (pista, loja, troca de óleo), bate numa API externa do parceiro e mostra se cada um tá ativo e com os aceites certos. No final já diz se o cliente está apto pra ativação ou não.
 
-## Estrutura do projeto
+**Geração de e-mail de Carga Full** — mesma lógica: cola o texto do chamado, o app separa os campos (ID do sistema, CNPJ, razão social, nome do cliente, telefone, e-mail, data de implantação), confere se falta algo e, se estiver tudo certo, já abre um rascunho pronto no Gmail direto do navegador.
+
+**Interface simples** — uma janelinha com dois botões, sem precisar abrir terminal pra usar no dia a dia.
+
+## Tecnologias
+
+- Python 3
+- [PySide6](https://doc.qt.io/qtforpython/) pra interface gráfica
+- [Requests](https://docs.python-requests.org/) pra falar com a API externa (OAuth2 client credentials)
+- [PyInstaller](https://pyinstaller.org/) pra gerar o `.exe` no Windows
+- Regex (`re`) pra extrair os dados do texto colado
+
+## Estrutura
 
 ```
 posto-assistant/
-├── main.py                        # Ponto de entrada, janela principal
+├── main.py                        # Entrada do app, janela principal
 ├── modules/
 │   ├── ativacao/                  # Validação de componentes via API do parceiro
 │   │   ├── api.py                 # Cliente HTTP (OAuth2 client credentials)
-│   │   ├── janela.py              # Interface da tela de validação
-│   │   ├── parser.py              # Extração de CNPJ, razão social e componentes do texto colado
-│   │   ├── service.py             # Orquestração: parser + API + validator
-│   │   └── validator.py           # Regras de negócio de ativação
+│   │   ├── janela.py              # Tela de validação
+│   │   ├── parser.py              # Extrai CNPJ, razão social e componentes do texto
+│   │   ├── service.py             # Junta parser + API + validator
+│   │   └── validator.py           # Regras de ativação
 │   ├── carga_full/
-│   │   └── janela.py              # Interface da tela de geração de e-mail
+│   │   └── janela.py              # Tela de geração de e-mail
 │   └── utils/
-│       └── janela.py              # Utilitário de centralização de janelas
+│       └── janela.py              # Centralizar janela na tela
 ├── services/
-│   ├── parser.py                  # Extração dos campos do chamado (regex)
-│   ├── email_generator.py         # Montagem do assunto/corpo a partir do template
-│   └── gmail.py                   # Abertura de rascunho no Gmail via URL
+│   ├── parser.py                  # Extrai os campos do chamado (regex)
+│   ├── email_generator.py         # Monta assunto/corpo a partir do template
+│   └── gmail.py                   # Abre o rascunho no Gmail
 ├── templates/
-│   └── carga_full_sga.txt         # Template do corpo do e-mail
+│   └── carga_full_sga.txt         # Template do e-mail
 ├── ui/
-│   └── janela_principal.py        # Reservado para evolução futura da UI
+│   └── janela_principal.py        # Reservado pra evolução futura da interface
 ├── mock_api/
-│   └── server.py                  # Mock local da API do parceiro, só para demonstração
-├── config.py                      # Configuração de demonstração (aponta para o mock local)
-├── config.py.example              # Modelo de configuração (para uso com uma API real)
+│   └── server.py                  # Mock local da API do parceiro, só pra demonstração
+├── config.py                      # Config de demonstração (aponta pro mock local)
 ├── requirements.txt
-├── PostoAssistant.spec            # Configuração do PyInstaller
-├── run.bat                        # Atalho para rodar em Windows
-└── PORTFOLIO_CHANGES.md           # Relatório de sanitização deste repositório
+├── PostoAssistant.spec            # Config do PyInstaller
+└── run.bat                        # Atalho pra rodar no Windows
 ```
 
-## Como executar
+## Rodando o projeto
 
-### Pré-requisitos
-
-- Python 3.10+
-- pip
-
-### Passo a passo
+Precisa de Python 3.10+ e pip.
 
 ```bash
-# 1. Clone o repositório
-git clone <url-do-seu-fork>
+git clone https://github.com/ognovais/posto-assistant.git
 cd posto-assistant
 
-# 2. Crie e ative um ambiente virtual
 python -m venv .venv
 # Windows:
 .venv\Scripts\activate
 # Linux/macOS:
 source .venv/bin/activate
 
-# 3. Instale as dependências
 pip install -r requirements.txt
-
-# 4. Configure as credenciais da API do parceiro
-copy config.py.example config.py   # Windows
-# cp config.py.example config.py   # Linux/macOS
-# edite config.py com as suas credenciais (não é versionado)
-
-# 5. Execute a aplicação
 python main.py
 ```
 
-No Windows, também é possível usar o atalho `run.bat`, que ativa o ambiente virtual e inicia a aplicação.
+No Windows dá pra usar o `run.bat` também, que já ativa o venv e roda o app.
 
-### Gerando o executável (opcional)
+### Gerando o .exe (opcional)
 
 ```bash
 pip install pyinstaller
 pyinstaller PostoAssistant.spec
 ```
 
-O executável será gerado em `dist/PostoAssistant.exe`.
+Sai em `dist/PostoAssistant.exe`.
 
-## Rodando com dados de demonstração (mock local)
+## Testando com dados fake (mock local)
 
-A tela "Validar componentes PETROMAX" depende de uma API externa. Para testar o fluxo completo sem uma API real, o repositório inclui um mock simples em `mock_api/server.py` (só biblioteca padrão do Python, sem instalar nada a mais). O `config.py` já vem configurado para apontar para ele.
+A tela de validação depende de uma API externa. Pra testar sem precisar de uma API de verdade, tem um mock bem simples em `mock_api/server.py` (só biblioteca padrão do Python, não precisa instalar nada extra). O `config.py` já vem apontando pra ele.
 
 ```bash
 # Terminal 1 — sobe o mock em http://127.0.0.1:5000
@@ -108,16 +102,16 @@ python mock_api/server.py
 python main.py
 ```
 
-Textos de exemplo para colar nas telas e tirar prints:
+Textos pra colar em cada tela e testar:
 
-**Validar componentes PETROMAX:**
+**Validar componentes:**
 ```
 Posto Fictício Exemplo LTDA
 12.345.678/0001-90
 Pista Loja OilFast
 ```
 
-**Gerar Email Carga FULL SGA:**
+**Gerar e-mail Carga Full:**
 ```
 ID_SISTEMA: 000123
 CNPJ: 12.345.678/0001-90
@@ -128,8 +122,6 @@ E-mail: cliente.contato@example.com
 Data da implantação: 01/08/2026
 ```
 
-> Nota: `config.py` continua listado no `.gitignore` (boa prática mantida do projeto original). Ele já vem criado neste pacote só para você rodar localmente e tirar prints. Se quiser que qualquer pessoa que clonar o repositório no GitHub consiga rodar o mock sem passos extras, remova `config.py` do `.gitignore` antes de publicar — os valores nele são fictícios e apontam só para `127.0.0.1`, sem nenhum risco.
-
 ## Licença
 
-Distribuído sob a licença MIT. Veja [`LICENSE`](./LICENSE) para mais detalhes.
+MIT. Veja [`LICENSE`](./LICENSE).
