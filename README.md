@@ -2,13 +2,22 @@
 
 App desktop em Python + PySide6 pra automatizar umas rotinas chatas de suporte técnico em ambientes de automação comercial (pensando em postos de combustível e redes de varejo, mas dá pra adaptar). A ideia é simples: em vez de ficar copiando e colando dado de chamado e conferindo API na mão, o app faz isso por você em alguns cliques.
 
-## Prints 
+## Prints
 
-![Tela principal](/docs/tela-principal.png)
-![Tela de validação de componentes](/docs/validar-componentes.png)
-![Tela de gerar email](/docs/gerar-email.png)
-![Resultado da validação de componentes](/docs/resultado-componentes.png)
-![Resultado do email gerado](/docs/resultado-email.png)
+<table>
+<tr>
+<td align="center"><img src="docs/tela-principal.png" width="380"/><br/><sub>Tela principal</sub></td>
+<td align="center"><img src="docs/validar-componentes.png" width="380"/><br/><sub>Validação de componentes</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/resultado-componentes.png" width="380"/><br/><sub>Resultado da validação</sub></td>
+<td align="center"><img src="docs/gerar-email.png" width="380"/><br/><sub>Gerar e-mail</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/resultado-email.png" width="380"/><br/><sub>E-mail gerado</sub></td>
+<td></td>
+</tr>
+</table>
 
 ## Funcionalidades
 
@@ -50,6 +59,7 @@ posto-assistant/
 │   └── janela_principal.py        # Reservado pra evolução futura da interface
 ├── mock_api/
 │   └── server.py                  # Mock local da API do parceiro, só pra demonstração
+├── docs/                          # Prints do app usados neste README
 ├── config.py                      # Config de demonstração (aponta pro mock local)
 ├── requirements.txt
 ├── PostoAssistant.spec            # Config do PyInstaller
