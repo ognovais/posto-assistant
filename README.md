@@ -15,7 +15,7 @@ App desktop em Python + PySide6 pra automatizar umas rotinas chatas de suporte t
     </tr>
     <tr>
     <td align="center"><img src="docs/resultado-email.png" width="380"/><br/><sub>E-mail gerado</sub></td>
-    <td align="center"><img scr="docs/tela-CNPJ.png" width="380"/><br><sub>Editar CNPJ</sub></td>
+    <td align="center"><img src="docs/tela-CNPJ.png" width="380"/><br><sub>Editar CNPJ</sub></td>
     </tr>
 </table>
 
