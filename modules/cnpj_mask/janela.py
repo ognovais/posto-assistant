@@ -17,10 +17,14 @@ def abrir_janela_cnpj_mask():
     campo_resultado.setReadOnly(True)
 
     def ao_clicar_mascarar():
-        campo_resultado.setText(mascarar_cnpj(campo_texto.text()))
+        resultado = mascarar_cnpj(campo_texto.text())
+        campo_resultado.setText(resultado)
+        QApplication.clipboard().setText(resultado)
 
     def ao_clicar_desmascarar():
-        campo_resultado.setText(desmascarar_cnpj(campo_texto.text()))
+        resultado = desmascarar_cnpj(campo_texto.text())
+        campo_resultado.setText(resultado)
+        QApplication.clipboard().setText(resultado)
 
     botao_mascarar = QPushButton("Mascarar")
     botao_mascarar.clicked.connect(ao_clicar_mascarar)
