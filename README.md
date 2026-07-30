@@ -5,18 +5,18 @@ App desktop em Python + PySide6 pra automatizar umas rotinas chatas de suporte t
 ## Prints
 
 <table>
-<tr>
-<td align="center"><img src="docs/tela-principal.png" width="380"/><br/><sub>Tela principal</sub></td>
-<td align="center"><img src="docs/validar-componentes.png" width="380"/><br/><sub>Validação de componentes</sub></td>
-</tr>
-<tr>
-<td align="center"><img src="docs/resultado-componentes.png" width="380"/><br/><sub>Resultado da validação</sub></td>
-<td align="center"><img src="docs/gerar-email.png" width="380"/><br/><sub>Gerar e-mail</sub></td>
-</tr>
-<tr>
-<td align="center"><img src="docs/resultado-email.png" width="380"/><br/><sub>E-mail gerado</sub></td>
-<td></td>
-</tr>
+    <tr>
+    <td align="center"><img src="docs/tela-principal.png" width="380"/><br/><sub>Tela principal</sub></td>
+    <td align="center"><img src="docs/validar-componentes.png" width="380"/><br/><sub>Validação de componentes</sub></td>
+    </tr>
+    <tr>
+    <td align="center"><img src="docs/resultado-componentes.png" width="380"/><br/><sub>Resultado da validação</sub></td>
+    <td align="center"><img src="docs/gerar-email.png" width="380"/><br/><sub>Gerar e-mail</sub></td>
+    </tr>
+    <tr>
+    <td align="center"><img src="docs/resultado-email.png" width="380"/><br/><sub>E-mail gerado</sub></td>
+    <td align="center"><img scr="docs/tela-CNPJ.png" width="380"/><br><sub>Editar CNPJ</sub></td>
+    </tr>
 </table>
 
 ## Funcionalidades
