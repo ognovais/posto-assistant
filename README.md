@@ -23,6 +23,7 @@ App desktop em Python + PySide6 pra automatizar umas rotinas chatas de suporte t
 
 - **Validação de componentes de automação**: cola-se o texto de um chamado de suporte (ou vários, um após o outro), a aplicação extrai CNPJ, razão social e os componentes solicitados (pista, loja, serviço de troca de óleo), consulta uma API externa de um parceiro de automação e mostra se cada componente está ativo e com os aceites necessários, indicando se o cliente está apto para a ativação.
 - **Geração de e-mail de Carga Full**: cola-se os dados recebidos de um chamado, a aplicação extrai os campos (ID do sistema, CNPJ, razão social, nome do cliente, telefone, e-mail, data de implantação), valida se todos os campos obrigatórios foram informados e abre um rascunho de e-mail já preenchido (assunto, corpo e destinatários) direto no Gmail via navegador.
+- **Editar CNPJ**: mascara e desmascara CNPJ (de `12345678000190` pra `12.345.678/0001-90` e vice-versa), útil pra colar dado cru de sistema e formatar rápido, ou o contrário.
 - **Interface gráfica simples**: janela principal com botões de acesso rápido a cada rotina, sem necessidade de uso de terminal no dia a dia.
 
 ## Tecnologias
@@ -47,6 +48,9 @@ posto-assistant/
 │   │   └── validator.py           # Regras de ativação
 │   ├── carga_full/
 │   │   └── janela.py              # Tela de geração de e-mail
+│   ├── cnpj_mask/
+│   │   ├── janela.py              # Tela de mascarar/desmascarar CNPJ
+│   │   └── service.py             # Lógica de mascarar/desmascarar
 │   └── utils/
 │       └── janela.py              # Centralizar janela na tela
 ├── services/
